@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeilVest Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Set a font for the body */
+            background-color: #fff; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            text-align: center;
+        }
+
+        .login-form {
+            background-color: #fff; /* White background for the form */
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .app-title {
+            color: hotpink;
+            font-size: 32px;
+            margin-bottom: 30px;
+            text-align: center; /* Center the title */
+        }
+
+        .form-group {
+            width: 100%;
+            margin-bottom: 10px; /* Space between input fields */
+            margin-left: -10px;
+            display: flex; /* Use flexbox for alignment */
+            align-items: center; /* Center items vertically */
+            border: 1px solid hotpink; /* Optional: Border for input fields */
+            border-radius: 10px; /* Rounded corners */
+            padding: 10px; /* Padding around the content */
+        }
+
+        .icon {
+            width: 20px; /* Icon size */
+            height: 20px; /* Icon size */
+            margin-right: 10px; /* Space between icon and input */
+        }
+        
+        input {
+            border: none; /* No border for the input */
+            flex: 1; /* Allow input to grow and fill available space */
+            font-size: 16px; /* Font size for input text */
+            outline: none; /* No outline on focus */
+            color: #333; /* Text color */
+        }
+        
+        input::placeholder {
+            color: #aaa; /* Placeholder text color */
+        }
+        
+        .login-btn {
+            width: 100%; /* Ensures button occupies the full width */
+            background-color: hotpink;
+            color: #fff;
+            border: none;
+            padding: 15px; /* Padding for better button appearance */
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 20px; /* Space above button */
+            transition: background-color 0.3s; /* Smooth transition effect */
+        }
+        
+        .login-btn:hover {
+            background-color: #d81b60; /* Darker pink on hover */
+        }
+        .registration-link {
+            display: block;
+            margin-top: 20px;
+            color: hotpink;
+            text-decoration: none;
+        }
+        
+        .registration-link:hover {
+            color: #d81b60;
+        }
+        #message {
+            color: red; /* Default color for message */
+            text-align: center; /* Center the text */
+            margin-top: 10px; /* Space above message */
+            height: 40px; /* Fixed height to prevent layout shifts */
+            overflow: hidden; /* Hide overflow to keep layout neat */
+        }
+ 
+
+        
+    
+        @media (max-width: 600px) {
+            .registration-container {
+                width: 90%;
+            }
+        
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1 class="app-title">VeilVest</h1>
+    
+        <form id="loginForm" class="login-form">
+            <div class="form-group">
+                <img src="phone-icon.png" alt="phone icon" class="icon">
+                <input type="text" id="login-phone" placeholder="Please enter phone number" required>
+            </div>
+            <div class="form-group">
+                <img src="password-icon.png" alt="password icon" class="icon">
+                <input type="password" id="login-password" placeholder="Please enter your password" required>
+            </div>
+    
+            <div class="save-password-group">
+                <input type="checkbox" id="save-password">
+                <label for="save-password">Save Password</label>
+            </div>
+    
+            <button type="submit" class="login-btn">Submit</button>
+            <div>
+                <a href="index.html" class="registration-link">Register Account</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        // When the login form is submitted
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+    
+            // Get the phone number and password values from the input fields
+            const phoneNumber = document.getElementById('login-phone').value;
+            const password = document.getElementById('login-password').value;
+    
+            // Save the phone number (registered number) to localStorage
+            localStorage.setItem('registeredNumber', phoneNumber);
+    
+            // For demonstration purposes, you can redirect the user to the "Mine" page
+            // after successfully logging in.
+            window.location.href = 'mine.html'; // Redirect to "Mine" page
+        });
+    </script>
+
+
+    
+    <script>
+        // Check if user is logged in and session is valid
+        const oneHour = 60 * 60 * 1000; // 1 hour in milliseconds
+        const loggedInUser = localStorage.getItem('loggedInUser');
+        const loginTime = localStorage.getItem('loginTime');
+    
+        if (loggedInUser && loginTime) {
+            const currentTime = new Date().getTime();
+            if (currentTime - loginTime > oneHour) {
+                // If more than 1 hour has passed, log the user out
+                localStorage.removeItem('loggedInUser');
+                localStorage.removeItem('loginTime');
+                window.location.href = 'login.html'; // Redirect to login
+            } else {
+                // If still within 1 hour, redirect to dashboard
+                window.location.href = 'dashboard.html';
+            }
+        }
+    
+        // Auto-fill the saved password if available
+        const savedPassword = localStorage.getItem('savedPassword');
+        if (savedPassword) {
+            document.getElementById('login-password').value = savedPassword;
+            document.getElementById('save-password').checked = true; // Check the "Save Password" checkbox
+        }
+    
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+    
+            // Get input values
+            let loginPhone = document.getElementById('login-phone').value.trim();
+            let loginPassword = document.getElementById('login-password').value;
+            const savePassword = document.getElementById('save-password').checked;
+    
+            // Retrieve stored users from localStorage
+            let registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+    
+            // Debugging: Log the values for verification
+            console.log('Login Phone:', loginPhone);
+            console.log('Login Password:', loginPassword);
+            console.log('Registered Users:', registeredUsers);
+    
+            // Check if the entered phone and password match any registered user
+            const user = registeredUsers.find(user => user.phone === loginPhone && user.password === loginPassword);
+    
+            if (user) {
+                alert("Login successful!");
+                // Store the logged-in user and login time in localStorage
+                localStorage.setItem('loggedInUser', loginPhone);
+                localStorage.setItem('loginTime', new Date().getTime());
+    
+                // If the "Save Password" checkbox is checked, save the password
+                if (savePassword) {
+                    localStorage.setItem('savedPassword', loginPassword);
+                } else {
+                    localStorage.removeItem('savedPassword'); // Clear saved password if checkbox is unchecked
+                }
+    
+                window.location.href = 'dashboard.html'; // Redirect to dashboard
+            } else {
+                alert("Invalid phone number or password. Please try again.");
+            }
+        });
+    
+        // Logout functionality (if needed on the same page)
+        const logoutLink = document.getElementById('logoutLink');
+        if (logoutLink) {
+            logoutLink.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default link behavior
+    
+                // Clear user session
+                localStorage.removeItem('loggedInUser');
+                localStorage.removeItem('loginTime');
+                localStorage.removeItem('savedPassword'); // Optionally clear saved password when logging out
+    
+                alert("You have successfully logged out.");
+                window.location.href = 'login.html'; // Redirect to login page
+            });
+        }
+    </script>
+    
+
+    
+
+    <script src="scripts.js"></script>
+</body>
+</html>

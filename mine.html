@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mine Page</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link your CSS file -->
+<style>
+    body {
+        font-family: Arial, sans-serif; /* Use a clean, modern font */
+        background-color: #f4f4f4; /* Light background color */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center content horizontally */
+    }
+    
+    .mine-container {
+        max-width: 600px; /* Set a maximum width for the container */
+        background: white; /* White background for the container */
+       
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+        border-radius: 8px; /* Rounded corners */
+        margin-top: 20px; /* Space from the top */
+        text-align: center; /* Center text */
+    }
+    
+    .title {
+        font-size: 22px; /* Title font size */
+        margin-bottom: 20px; /* Space below title */
+    }
+    
+    .registered-number {
+        margin-bottom: 18px; /* Space below registered number */
+    }
+    .registered-number h2 {
+        margin-bottom: 14px; /* Space below registered number */
+        color: red;
+    }
+    
+    .account-balance h3 {
+        font-size: 26px; /* Balance font size */
+        color: #4CAF50; /* Green color for balance */
+    }
+    
+    .button-group {
+        margin: 10px 0; /* Space above and below button group */
+    }
+    
+    .button {
+        display: inline-block; /* Allow margin and padding */
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0); /* Text color */
+        padding: 10px 20px; /* Padding */
+        text-decoration: none; /* Remove underline */
+        border-radius: 15px; /* Rounded corners */
+        margin: 5px; /* Space between buttons */
+        transition: background-color 0.3s; /* Smooth transition */
+    }
+    
+    .button:hover {
+        background-color:rgb(255, 255, 255);
+    }
+    
+    .invite-section {
+        border: 1px solid #ccc; /* Border around invite section */
+        padding: 0px; /* Padding */
+        margin: -5px 0; /* Space above and below */
+    }
+    
+    .record-buttons {
+        margin: 20px 0; /* Space above and below record buttons */
+    }
+    
+    .app-download {
+        margin-top: 20px; /* Space above app download section */
+    }
+    .button-icon {
+        width: 40px; /* Small icon size */
+        height: 40px;
+        margin-bottom: 20px; /* Space between icon and text */
+    }
+    
+    .button-label {
+        font-size: 12px; /* Small text size */
+        text-align: center;
+        margin-left: -45px;
+        color: #333;
+    }
+    .logout-section {
+        text-align: center; /* Center the logout button */
+        margin: -10px 0; /* Adjust margin to move the button down */
+        padding-top: 150px; /* Add padding to create space above */
+    }
+    
+    
+    .logout-button {
+        background-color: #ff4c4c; /* Logout button color */
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 15px; /* Rounded corners */
+        transition: background-color 0.3s; /* Smooth transition */
+    }
+    
+    .logout-button:hover {
+        background-color: #d43f3f; /* Darker red on hover */
+    }
+    
+    
+    
+    .footer {
+        background-color: hotpink;
+        padding: 10px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        border-radius: 15px;
+        display: block;
+    }
+    
+    .footer-icons {
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .footer-icon {
+        width: 40px; /* Adjust size as needed */
+        height: 40px; /* Adjust size as needed */
+    }
+    
+    
+    
+</style>
+   
+    <div class="mine-container">
+        <h1 class="title">My Account</h1>
+        
+        <div class="registered-number">
+            <p>Registered No.</p>
+            <h2 id="registeredNumber">[Registered Number]</h2> <!-- Placeholder for the registered number -->
+        </div>
+        <script>
+            // Function to display the registered number on the Mine page
+            function displayRegisteredNumber() {
+                // Retrieve the registered number from localStorage
+                const registeredNumber = localStorage.getItem('registeredNumber');
+        
+                // Check if a registered number exists
+                if (registeredNumber) {
+                    // Display the registered number in the element with ID 'registeredNumber'
+                    document.getElementById('registeredNumber').textContent = registeredNumber;
+                } else {
+                    // If no registered number is found, display a placeholder or a message
+                    document.getElementById('registeredNumber').textContent = 'No number registered';
+                }
+            }
+        
+            // Call displayRegisteredNumber on page load to show the registered number
+            window.onload = displayRegisteredNumber;
+        </script>
+        
+        <div class="button-group">
+            <a href="recharge.html" class="button">
+                <img src="recharge-icon.png" alt="Recharge Icon" class="button-icon">
+                <span class="button-label">Recharge</span>
+            </a>
+            <a href="withdraw.html" class="button">
+                <img src="withdraw-icon.png" alt="Withdraw Icon" class="button-icon">
+                <span class="button-label">Withdraw</span>
+            </a>
+            <a href="treasure.html" class="button">
+                <img src="treasure-icon.png" alt="Treasure Icon" class="button-icon">
+                <span class="button-label">Treasure</span>
+            </a>
+        </div>
+        <div class="account-balance">
+            <h3>₱00.00</h3>
+            <p>Account Balance</p>
+        </div>
+        <div class="record-buttons">
+            <a href="my-orders.html" class="button">
+                <img src="my-orders-icon.png" alt="My Orders Icon" class="button-icon">
+                <span class="button-label">My Orders</span>
+            </a>
+            <a href="bank-account.html" class="button">
+                <img src="bank-account-icon.png" alt="Bank Account Icon" class="button-icon">
+                <span class="button-label">Bank Account</span>
+            </a>
+            <a href="login-password.html" class="button">
+                <img src="login-password-icon.png" alt="Login Password Icon" class="button-icon">
+                <span class="button-label">Login Password</span>
+            </a>
+        </div>
+            <a href="recharge-records.html" class="button">
+                <img src="recharge-records-icon.png" alt="Recharge Records Icon" class="button-icon">
+                <span class="button-label">Recharge Records</span>
+            </a>
+            <a href="withdrawal-records.html" class="button">
+                <img src="withdrawal-records-icon.png" alt="Withdrawal Records Icon" class="button-icon">
+                <span class="button-label">Withdrawal Records</span>
+            </a>
+            <a href="funding-records.html" class="button">
+                <img src="funding-records-icon.png" alt="Funding Records Icon" class="button-icon">
+                <span class="button-label">Funding Records</span>
+            </a>
+       
+            <a href="app-download.html" class="button">
+                <img src="app-download-icon.png" alt="App Download Icon" class="button-icon">
+                <span class="button-label">Download Now</span>
+            </a>
+        </div>
+        </div>
+        <section>
+         <div class="record-buttons">
+        <a href="logout.html" id="logoutLink" class="logout-button">Logout</a>
+    </div>
+</section>
+    <script>
+            // Logout functionality
+            document.getElementById('logoutLink').addEventListener('click', function(e) {
+                e.preventDefault();  // Prevent default link behavior
+                localStorage.removeItem('loggedInUser'); // Clear user session
+                alert("You have successfully logged out.");
+                window.location.href = 'login.html'; // Redirect to login page
+            });
+        
+            // Check if user is logged in
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            if (!loggedInUser) {
+                // If no user is logged in, redirect to login page
+                window.location.href = 'login.html';
+            }
+        </script>
+
+     
+    
+    </div>
+</div>
+</div>
+
+<footer class="footer">
+<div class="footer-icons">
+    <a href="dashboard.html">
+        <img src="home-icon.png" alt="Home" class="footer-icon">
+    </a>
+    <a href="invest.html">
+        <img src="invest-icon.png" alt="Invest" class="footer-icon">
+    </a>
+    <a href="teams.html">
+        <img src="team-icon.png" alt="Teams" class="footer-icon">
+    </a>
+    <a href="mine.html" id="logoutLink">
+        <img src="mine-icon.png" alt="Mine" class="footer-icon">
+    </a>
+</div>
+</footer>
+
+
+
+</div>
+</body>
+</html>

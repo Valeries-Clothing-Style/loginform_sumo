@@ -1,0 +1,173 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full height to cover the screen */
+}
+
+.header {
+    background-color: #007bff; /* Header background color */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.main-content {
+    flex: 1; /* Take up the remaining space */
+    padding: 20px;
+    background-color: #f8f9fa; /* Main content background */
+}
+
+
+.logout-section {
+    text-align: center; /* Center the logout button */
+    margin: -50px 0; /* Adjust margin to move the button down */
+    padding-top: 150px; /* Add padding to create space above */
+}
+
+
+.logout-button {
+    background-color: #ff4c4c; /* Logout button color */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.logout-button:hover {
+    background-color: #d43f3f; /* Darker red on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+.footer {
+    background-color: hotpink;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-radius: 15px;
+    display: block;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-icon {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.mine-container {
+    max-width: 600px; /* Set a maximum width for the container */
+    background: white; /* White background for the container */
+    padding: 20px; /* Padding around the content */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+    margin-top: 20px; /* Space from the top */
+    text-align: center; /* Center text */
+   
+}
+
+.title {
+    font-size: 24px; /* Title font size */
+    margin-bottom: 20px; /* Space below title */
+}
+
+.registered-number {
+    margin-bottom: 20px; /* Space below registered number */
+}
+
+.account-balance h3 {
+    font-size: 36px; /* Balance font size */
+    color: #4CAF50; /* Green color for balance */
+}
+
+.button-group {
+    margin: 20px 0; /* Space above and below button group */
+}
+
+.button {
+    display: inline-block; /* Allow margin and padding */
+    background-color: #007bff; /* Button color */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    margin: 5px; /* Space between buttons */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.invite-section {
+    border: 1px solid #ccc; /* Border around invite section */
+    padding: 10px; /* Padding */
+    margin: 20px 0; /* Space above and below */
+}
+
+.record-buttons {
+    margin: 20px 0; /* Space above and below record buttons */
+}
+
+.app-download {
+    margin-top: 20px; /* Space above app download section */
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 600px) {
+    .mine-container {
+        padding: 15px; /* Less padding on mobile */
+    }
+
+    .title {
+        font-size: 20px; /* Smaller title font size on mobile */
+    }
+
+    .account-balance h3 {
+        font-size: 30px; /* Smaller balance font size on mobile */
+    }
+
+    .button {
+        padding: 8px 15px; /* Less padding for buttons on mobile */
+        font-size: 14px; /* Smaller button text */
+    }
+
+    .invite-section, .record-buttons {
+        padding: 5px; /* Less padding for sections on mobile */
+    }
+}
